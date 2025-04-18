@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AlfaMundo - Escolha seu personagem</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background-color: #f0f8ff;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      color: #4b0082;
+    }
+    .characters, .missions {
+      display: none;
+    }
+    .character {
+      border: 4px solid transparent;
+      border-radius: 20px;
+      padding: 10px;
+      transition: 0.3s;
+      cursor: pointer;
+      display: inline-block;
+      margin: 10px;
+    }
+    .character:hover {
+      border-color: #4b0082;
+      background-color: #ffe4f0;
+    }
+    .character img {
+      width: 200px;
+      height: auto;
+      border-radius: 20px;
+    }
+    .message {
+      margin-top: 20px;
+      font-size: 1.3em;
+      color: #008b8b;
+    }
+    .btn {
+      margin: 20px 10px;
+      padding: 10px 20px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .start-btn {
+      background-color: #4b0082;
+      color: white;
+    }
+    .start-btn:hover {
+      background-color: #6a0dad;
+    }
+    .back-btn {
+      background-color: #ddd;
+    }
+    .mission {
+      margin: 15px auto;
+      width: 300px;
+      padding: 10px;
+      background-color: #ffe4f0;
+      border: 2px solid #d87093;
+      border-radius: 10px;
+      font-size: 1.1em;
+    }
+    /* Adicionar estilos para o ícone de voltar */
+    .back-icon {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 1.5em;
+      text-decoration: none;
+      color: #4b0082;
+      cursor: pointer;
+    }
+
+    .back-icon:hover {
+      color: #6a0dad;
+    }
+  </style>
+</head>
+<body>
+  <div id="stage-personagem">
+    <h1>Bem-vindo(a) ao AlfaMundo!</h1>
+    <p>Escolha seu personagem para começar a aventura:</p>
+    <div class="characters" style="display: block;">
+      <div class="character" onclick="escolherPersonagem('feminino')">
+        <img src="meninar.png" alt="Abêzinha">
+        <p>Abêzinha</p>
+      </div>
+      <div class="character" onclick="escolherPersonagem('masculino')">
+        <img src="meninor.png" alt="Betinho">
+        <p>Betinho</p>
+      </div>
+    </div>
+    <div class="message" id="mensagemEscolha"></div>
+    <button class="btn start-btn" id="startButton" style="display:none;" onclick="iniciarAventura()">Começar Aventura</button>
+  </div>
+
+  <div id="stage-missoes" class="missions">
+    <a class="back-icon" onclick="voltarEscolha()" title="Voltar">
+      ⬅️
+    </a>
+    <h2>Missões do AlfaMundo:</h2>
+    <div class="mission"> Encontrar as letras escondidas</div>
+    <div class="mission"> Montar sílabas com sons divertidos</div>
+    <div class="mission"> Ligar figuras às palavras</div>
+    <div class="mission"> Criar sua própria historinha ilustrada</div>
+  </div>
+
+  <script>
+    function escolherPersonagem(tipo) {
+      const msg = document.getElementById('mensagemEscolha');
+      const btn = document.getElementById('startButton');
+      if (tipo === 'feminino') {
+        msg.textContent = "Você escolheu desbravar o AlfaMundo junto com a Abêzinha! Vamos começar nossa aventura!";
+      } else {
+        msg.textContent = "Você escolheu desbravar o AlfaMundo junto com o Betinho! Vamos começar nossa aventura!";
+      }
+      btn.style.display = 'inline-block';
+    }
+
+    function iniciarAventura() {
+      document.getElementById('stage-personagem').style.display = 'none';
+      document.getElementById('stage-missoes').style.display = 'block';
+    }
+
+    function voltarEscolha() {
+      document.getElementById('stage-personagem').style.display = 'block';
+      document.getElementById('startButton').style.display = 'none';
+      document.getElementById('mensagemEscolha').textContent = '';
+      document.getElementById('stage-missoes').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
